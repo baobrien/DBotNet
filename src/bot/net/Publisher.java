@@ -2,11 +2,31 @@ package bot.net;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class Publisher.
+ */
 public class Publisher implements Runnable {
+		
+		/** The Network Interface. */
 		NetIF nif;
+		
+		/** The subscribers. */
 		Vector<Integer> subscribers;
+		
+		/** The extra included data. */
 		String exdata[];
+		
+		/** The servid. */
 		int servid;
+	
+	/**
+	 * Instantiates a new publisher.
+	 *
+	 * @param nf the nf
+	 * @param sc the sc
+	 */
 	public Publisher(NetIF nf,int sc)
 	{
 		nif=nf;
@@ -14,6 +34,13 @@ public class Publisher implements Runnable {
 		subscribers = new Vector<Integer>(32);
 		exdata=new String[32];
 	}
+	
+	/**
+	 * Publish.
+	 *
+	 * @param data the data
+	 * @throws Exception the exception
+	 */
 	public void Publish(String data[]) throws Exception
 	{
 		String rdata[]=new String[data.length+1];
@@ -30,6 +57,14 @@ public class Publisher implements Runnable {
 			nif.Send(p);
 		}
 	}
+	
+	/**
+	 * Publish matching.
+	 *
+	 * @param data the data
+	 * @param match the match
+	 * @throws Exception the exception
+	 */
 	public void PublishMatching(String data[],String match) throws Exception
 	{
 		String rdata[]=new String[data.length+1];
@@ -49,6 +84,10 @@ public class Publisher implements Runnable {
 			}
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	public void run() {
 		while(true)
 		{
@@ -71,6 +110,13 @@ public class Publisher implements Runnable {
 			}
 		}
 	}
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws Exception the exception
+	 */
 	public static void main(String[] args) throws Exception
 	{
 		BufferedReader kb=new BufferedReader(new InputStreamReader(System.in));
@@ -86,10 +132,22 @@ public class Publisher implements Runnable {
 			publ.Publish(x);
 		}
 	}
+	
+	/** The Constant TYPE_SUBCONT. */
 	public static final int TYPE_SUBCONT=5;
+	
+	/** The Constant TYPE_SUBDATA. */
 	public static final int TYPE_SUBDATA=6;
+	
+	/** The Constant CMD_NEWSUB. */
 	public static final int CMD_NEWSUB=0;
+	
+	/** The Constant CMD_ENDSUB. */
 	public static final int CMD_ENDSUB=1;
+	
+	/** The Constant CMD_SUBACK. */
 	public static final int CMD_SUBACK=2;
+	
+	/** The Constant CMD_SUBDATA. */
 	public static final int CMD_SUBDATA=0;
 }

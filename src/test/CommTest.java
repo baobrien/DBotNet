@@ -4,11 +4,17 @@ import java.util.Enumeration;
 
 import gnu.io.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CommTest.
+ */
 public class CommTest {
 
 	/**
-	 * @param args
-	 * @throws Exception
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws Exception the exception
 	 */
 	public static void main(String[] args) throws Exception {
 		Enumeration<CommPortIdentifier> commports = CommPortIdentifier

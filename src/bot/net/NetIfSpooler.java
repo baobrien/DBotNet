@@ -4,15 +4,34 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NetIfSpooler.
+ */
 public class NetIfSpooler extends Thread {
+	
+	/** The spool. */
 	private Vector<Vector<Packet>> spool;
 
+	/** The sock. */
 	private Socket sock;
 
+	/** The br. */
 	private BufferedReader br;
 
+	/** The ps. */
 	private PrintStream ps;
+	
+	/** The err. */
 	private int err;
+	
+	/**
+	 * Instantiates a new net if spooler.
+	 *
+	 * @param buffer the buffer
+	 * @param s the s
+	 * @throws Exception the exception
+	 */
 	public NetIfSpooler(Vector<Vector<Packet>> buffer, Socket s)
 	throws Exception {
 		spool = buffer;
@@ -28,6 +47,12 @@ public class NetIfSpooler extends Thread {
 		}
 
 	}
+	
+	/**
+	 * Catalog.
+	 *
+	 * @param p the p
+	 */
 	public void Catalog(Packet p) {
 		try {
 			p.Decode();
@@ -39,6 +64,10 @@ public class NetIfSpooler extends Thread {
 		}
 		if(err>=5)this.stop();
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	public void run() {
 		String t = null;
 		while (sock.isConnected()) {

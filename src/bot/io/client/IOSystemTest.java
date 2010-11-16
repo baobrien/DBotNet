@@ -7,13 +7,19 @@ import java.net.UnknownHostException;
 import bot.io.Mode;
 import bot.net.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IOSystemTest.
+ */
 public class IOSystemTest {
 
 	/**
-	 * @param args
-	 * @throws Exception
-	 * @throws IOException
-	 * @throws UnknownHostException
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws UnknownHostException the unknown host exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws Exception the exception
 	 */
 	public static void main(String[] args) throws UnknownHostException,
 	IOException, Exception {

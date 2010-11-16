@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package bot.io.service;
 
 import java.net.*;
@@ -8,13 +11,26 @@ import bot.io.Mode;
 import bot.io.lockException;
 import bot.net.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IOService.
+ */
 public class IOService extends NetIF {
 
 
+	/** The ports. */
 	Vector<SeviceControlPort> ports;
 
+	/** The iodev. */
 	IODevice iodev;
 
+	/**
+	 * Instantiates a new iO service.
+	 *
+	 * @param s the s
+	 * @param Node the node
+	 * @throws Exception the exception
+	 */
 	public IOService(Socket s, int Node) throws Exception {
 
 		super(s, Node);
@@ -28,6 +44,11 @@ public class IOService extends NetIF {
 
 	}
 
+	/**
+	 * Handle_in.
+	 *
+	 * @param p the p
+	 */
 	public void handle_in(Packet p) {
 		int selected = -1;
 		int t = 0;
@@ -50,6 +71,11 @@ public class IOService extends NetIF {
 		}
 	}
 
+	/**
+	 * Handle_lock.
+	 *
+	 * @param p the p
+	 */
 	public void handle_lock(Packet p) {
 		int lockport = 0;
 		try {
@@ -65,6 +91,11 @@ public class IOService extends NetIF {
 		}
 	}
 
+	/**
+	 * Handle_mode.
+	 *
+	 * @param p the p
+	 */
 	public void handle_mode(Packet p) {
 		int selectd = -1;
 		int i=-1;
@@ -90,6 +121,11 @@ public class IOService extends NetIF {
 		}
 	}
 
+	/**
+	 * Handle_out.
+	 *
+	 * @param p the p
+	 */
 	public void handle_out(Packet p) {
 		int selectd = -1;
 		int i=-1;
@@ -118,6 +154,11 @@ public class IOService extends NetIF {
 	}
 
 
+	/**
+	 * Handle_unlock.
+	 *
+	 * @param p the p
+	 */
 	public void handle_unlock(Packet p) {
 		int lockport = 0;
 		try {
@@ -133,6 +174,9 @@ public class IOService extends NetIF {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see bot.net.NetIF#OnRcv(bot.net.Packet)
+	 */
 	public void OnRcv(Packet p) {
 		if (p.type == Mode.TYPE_IOSERVICE_COMMAND)
 			switch (p.cmd) {
@@ -157,6 +201,13 @@ public class IOService extends NetIF {
 		else
 			super.Catalog(p);
 	}
+	
+	/**
+	 * Reply.
+	 *
+	 * @param reply_type the reply_type
+	 * @param p the p
+	 */
 	private void reply(int reply_type, Packet p) {
 		try {
 			super.Send(new Packet(0, p.nodesending, Mode.TYPE_IOSERVICE_REPLY,
@@ -164,6 +215,14 @@ public class IOService extends NetIF {
 		} catch (Exception e1) {
 		}
 	}
+	
+	/**
+	 * Reply with data.
+	 *
+	 * @param reply_type the reply_type
+	 * @param p the p
+	 * @param Data the data
+	 */
 	private void replyWithData(int reply_type, Packet p, String Data) {
 		try {
 			super.Send(new Packet(0, p.nodesending, Mode.TYPE_IOSERVICE_REPLY,

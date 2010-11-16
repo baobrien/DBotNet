@@ -5,6 +5,7 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * NetIF is an automatic interface to simplify bot network communications, and
  * it includes facilities to automate creation of services by inheritance.
@@ -28,6 +29,7 @@ public class NetIF {
 	 */
 	protected PrintStream ps;
 
+	/** The node. */
 	private int node;
 
 	/**
@@ -36,23 +38,16 @@ public class NetIF {
 	 */
 	private Vector<Vector<Packet>> TypeHolder;
 
-	/**
-	 * Spool threat to automatically put data from the buffer into TypeHolder
-	 */
+	/** Spool threat to automatically put data from the buffer into TypeHolder. */
 	private NetIfSpooler spool;
 
 	/**
 	 * Construct NetIF using a socket, and the bot/process address.
-	 * 
-	 * @param s
-	 *            Socket to be used throughout NetIF.
-	 * @param Node
-	 *            Bot Number.
-	 * @param Process
-	 *            Process Number.
-	 * @throws Exception
-	 *             If an error is found durng construction, there is now way to
-	 *             trap it.
+	 *
+	 * @param s Socket to be used throughout NetIF.
+	 * @param Node Bot Number.
+	 * @throws Exception If an error is found durng construction, there is now way to
+	 * trap it.
 	 */
 
 	public NetIF(Socket s, int Node) throws Exception {
@@ -89,6 +84,11 @@ public class NetIF {
 		}
 	}
 
+	/**
+	 * Checks if is connected.
+	 *
+	 * @return true, if is connected
+	 */
 	public boolean isConnected() {
 		return sock.isConnected();
 	}
@@ -141,11 +141,10 @@ public class NetIF {
 	}
 
 	/**
-	 * Receive the first packet addressed for this NetIF
-	 * 
+	 * Receive the first packet addressed for this NetIF.
+	 *
 	 * @return First packet addressed for this NetIF
-	 * @throws Exception
-	 *             if error found in decoding or receiving
+	 * @throws Exception if error found in decoding or receiving
 	 */
 	public Packet RcvChecked() throws Exception {
 		Packet p = null;
@@ -182,6 +181,13 @@ public class NetIF {
 		spool = new NetIfSpooler(TypeHolder, sock);
 		spool.start();
 	}
+	
+	/**
+	 * Type de spool.
+	 *
+	 * @param type the type
+	 * @return the packet
+	 */
 	public Packet TypeDeSpool(int type) {
 		Packet t;
 		while (TypeHolder.elementAt(type).size() < 1) {
@@ -214,6 +220,13 @@ public class NetIF {
 				TypeHolder.elementAt(type).firstElement());
 		return t;
 	}
+	
+	/**
+	 * X send.
+	 *
+	 * @param p the p
+	 * @throws Exception the exception
+	 */
 	public void XSend(Packet p) throws Exception {
 		p.Encode();
 		ps.println(p.raw);

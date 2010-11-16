@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package bot.io.service;
 
 import java.io.*;
@@ -5,9 +8,18 @@ import java.io.*;
 import bot.io.IODevice;
 import bot.io.Mode;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ConsoleIODevice.
+ */
 public class ConsoleIODevice implements IODevice {
+	
+	/** The kb. */
 	BufferedReader kb;
 
+	/**
+	 * Instantiates a new console io device.
+	 */
 	public ConsoleIODevice() {
 		kb = new BufferedReader(new InputStreamReader(System.in));
 	}

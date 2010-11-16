@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * ServerThreads are created by MultiServer to handle multiple connections and
  * coordinate repeating of data.
@@ -30,19 +31,20 @@ public class ServerThread extends Thread {
 	 * read errors, 5 or more disconnect socket and kill ServerThread.
 	 */
 	private int err;
+	
+	/** The bot. */
 	private int bot;
+	
 	/**
 	 * sets Socket and Renders BufferedReader and PrintStream from Socket.
-	 * 
-	 * @param s
-	 *            Socket created by ServerSocket accept method used to stream
-	 *            data to and from the client.
-	 * @param CurrentThreads
-	 *            Vector Created by MultiServer to reference all active
-	 *            ServerThreads.
-	 * @exception Exception
-	 *                Thrown when a BufferedReader or PrintStream cannot be
-	 *                pulled from the Socket.
+	 *
+	 * @param s Socket created by ServerSocket accept method used to stream
+	 * data to and from the client.
+	 * @param CurrentThreads Vector Created by MultiServer to reference all active
+	 * ServerThreads.
+	 * @param bot the bot
+	 * @throws Exception Thrown when a BufferedReader or PrintStream cannot be
+	 * pulled from the Socket.
 	 */
 	public ServerThread(Socket s, Vector<ServerThread> CurrentThreads, int bot)
 	throws Exception {
@@ -50,6 +52,10 @@ public class ServerThread extends Thread {
 		sts = CurrentThreads;
 		index = sts.indexOf(this);
 	}
+	
+	/**
+	 * Kill.
+	 */
 	public void kill() {
 		try {
 			ni.sock.close();
@@ -59,6 +65,8 @@ public class ServerThread extends Thread {
 		sts.remove(this);
 		this.stop();
 	}
+	
+	/** The my node. */
 	int myNode;
 	/**
 	 * Inherited from Thread, code to be executed in new thread.
