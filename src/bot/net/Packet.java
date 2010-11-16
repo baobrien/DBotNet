@@ -11,9 +11,9 @@ package bot.net;
  */
 public class Packet {
 
-	public static int EParse(String s) throws Exception {
+	/*public static int EParse(String s) throws Exception {
 		return new Integer(s).intValue();
-	}
+	}*/
 
 	public String raw;
 	public String rdata;
@@ -94,9 +94,57 @@ public class Packet {
 		return r;
 	}
 	private int eibt(String s, String b, String e) throws Exception {
-		return EParse(s.substring(cno(s.indexOf(b)) + 1, cno(s.indexOf(e))));
+		return new Integer(s.substring(cno(s.indexOf(b)) + 1, cno(s.indexOf(e)))).intValue();
 	}
 	
+	public String getRaw() {
+		return raw;
+	}
+	public void setRaw(String raw) {
+		this.raw = raw;
+	}
+	public String getRdata() {
+		return rdata;
+	}
+	public void setRdata(String rdata) {
+		this.rdata = rdata;
+	}
+	public String[] getMdata() {
+		return mdata;
+	}
+	public void setMdata(String[] mdata) {
+		this.mdata = mdata;
+	}
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
+	}
+	public int getNodesending() {
+		return nodesending;
+	}
+	public void setNodesending(int nodesending) {
+		this.nodesending = nodesending;
+	}
+	public int getNodereceving() {
+		return nodereceving;
+	}
+	public void setNodereceving(int nodereceving) {
+		this.nodereceving = nodereceving;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public int getCmd() {
+		return cmd;
+	}
+	public void setCmd(int cmd) {
+		this.cmd = cmd;
+	}
 	public void Encode() {
 		rdata=encMData(mdata);
 		raw = "(" + nodesending + ">" + nodereceving + ":"

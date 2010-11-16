@@ -32,7 +32,7 @@ public class IOService extends NetIF {
 		int selected = -1;
 		int t = 0;
 		try {
-			selected = Packet.EParse(p.data);
+			selected = Integer.getInteger(p.data);
 		} catch (Exception e) {
 			reply(Mode.REPLY_IOSERVICE_ERR_RESEND, p);
 			return;
@@ -53,7 +53,7 @@ public class IOService extends NetIF {
 	public void handle_lock(Packet p) {
 		int lockport = 0;
 		try {
-			lockport = Packet.EParse(p.data);
+			lockport = Integer.getInteger(p.data);
 		} catch (Exception e) {
 			reply(Mode.REPLY_IOSERVICE_ERR_RESEND, p);
 		}
@@ -121,7 +121,7 @@ public class IOService extends NetIF {
 	public void handle_unlock(Packet p) {
 		int lockport = 0;
 		try {
-			lockport = Packet.EParse(p.data);
+			lockport = Integer.getInteger(p.data);
 		} catch (Exception e) {
 			reply(Mode.REPLY_IOSERVICE_ERR_RESEND, p);
 		}
