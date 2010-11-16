@@ -1,0 +1,47 @@
+Manifest
+Author(s): Brady O'Brien (with Help from Kevin Morey)
+Latest Revision: 35/7/10 10:28 PM
+Classes and Packages included:
++bot.io
+	-IODevice
+	-lockException
+	-Mode
+	+bot.io.client
+		-CPort
+		-IOClientHandler
+		-IOSystemTest	
+	+bot.io.service
+		-ConsoleIODevice
+		-IOService
+		-IOServiceRunner
+		-IOServiceControlPort
+		-IOQueryer - N/O
+		-ListerPort - N/O
+		-SD84IODevice -N/O (not operational)
+		-SD84IODriver -N/O
++bot.net
+	-MultiServer
+	-NetIF
+	-NetIFSpooler
+	-Packet
+	-ServerThread
+	-Publisher
+	-Subscriber
+	-SubscriptionListener
+Release Notes:
+9/27/10:
+-Packet now carries multiple pieces of data
+-MultiServer now forwards only to destenation
+-Added Publisher/Subscriber system
+5/23/10:
+-Split SD84IODevice into two classes to allow for easier work
+5/9/10:
+-Removed bot.io.client.sensor Package
+-Started work on SD84 IO board class
+-Added SD84IODevice
+5/7/10:
+-Started Release Notes
+-Changed address structure from (bot,process) to (node)
+-Re-structured ServerThread and MultiServer in order to allow for inner-communication of packets, instead of strings.
+	Allows for server to become interactive in later revisions
+-Removed bot.example and bot.bundle Packages
